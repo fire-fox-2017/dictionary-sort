@@ -22,8 +22,33 @@ function Dictionary () {
 
   this.sort = function() {
     return this._word_vault.sort();
-  }
+  };
+
+  this.insertionSort = function() {
+    let result = [];
+    for (let i = 1 ; i < this.word_vault ; i++) {
+      // iterate array
+      // check if arr[i] is smaller than arr[i-1]
+      // if yes, find until arr[i-1] is not smaller or equal than arr[i]
+
+
+      let j = i;
+      for (let k = 0 ; k < j ; k++ ) {
+        if ( this.word_vault[i] < this.word_vault[k]) {
+          // swap
+          let temp = this.word_vault[k];
+          this.word_vault[k] = this.word_vault[i];
+          this.word_vault[i] = temp;
+        }
+      }
+    }
+    
+  };
+
 }
+
+
+
 
 var dict = new Dictionary();
 
@@ -31,13 +56,14 @@ rl.prompt();
 
 rl.on('line', (input) => {
   // console.log('User input: ' + input);
-  if(input == "add"){
-    rl.setPrompt("New words: ");
-    rl.prompt();
+  if(input.length > 0){
+    // rl.setPrompt("New words: ");
+    // rl.prompt();
     dict.add_words(input);
 
-  } else if (input == "sort") {
-    console.log(dict.sort());
+  } else {
+    // console.log(dict.sort());
+    console.log(dict._word_vault);
   }
 
   rl.setPrompt("Your input: ");
@@ -51,5 +77,7 @@ rl.on('line', (input) => {
 // dict.add_words('beta');
 // console.log(dict.sort());
 //
+
+
 
 module.exports = Dictionary
