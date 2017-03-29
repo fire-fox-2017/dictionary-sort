@@ -31,13 +31,15 @@ function dictionary(arrIn){
     for(var k= 1;k<arrIn.length;k++){
       for(var l=k;l>0;l--){
         if(arrTemp[l]< arrTemp[l-1]){
-          var temp1 = arrIn[l];
-          arrIn[l] = arrIn[l-1];
-          arrIn[l-1] = temp1;
-		}
-      }
+          var temp1 = arrTemp[l];
+            var temp2 = arrIn[l];
+          arrTemp[l] = arrTemp[l-1];
+          arrTemp[l-1] = temp1;
+            arrIn[l] = arrIn[l-1];
+            arrIn[l-1] = temp2;
+		      }
+        }
 	}
-
   return arrIn;
 }
 rl.on('close', () => {
