@@ -3,7 +3,7 @@ const readline = require('readline');
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
-  prompt: "Your input: "
+  prompt: "Type a word: "
 });
 
 // const word = readline.createInterface({
@@ -26,23 +26,22 @@ function Dictionary () {
 
   this.insertionSort = function() {
     let result = [];
-    for (let i = 1 ; i < this.word_vault ; i++) {
+    for (let i = 1 ; i < this._word_vault.length ; i++) {
       // iterate array
       // check if arr[i] is smaller than arr[i-1]
       // if yes, find until arr[i-1] is not smaller or equal than arr[i]
 
-
       let j = i;
       for (let k = 0 ; k < j ; k++ ) {
-        if ( this.word_vault[i] < this.word_vault[k]) {
+        if ( this._word_vault[i].toLowerCase() < this._word_vault[k].toLowerCase()) {
           // swap
-          let temp = this.word_vault[k];
-          this.word_vault[k] = this.word_vault[i];
-          this.word_vault[i] = temp;
+          let temp = this._word_vault[k];
+          this._word_vault[k] = this._word_vault[i];
+          this._word_vault[i] = temp;
         }
       }
     }
-    
+
   };
 
 }
@@ -63,11 +62,17 @@ rl.on('line', (input) => {
 
   } else {
     // console.log(dict.sort());
+    console.log("Congratulations! Your dictionary has " + dict._word_vault.length +" words:")
+    console.log(dict._word_vault);
+
+    dict.insertionSort();
     console.log(dict._word_vault);
   }
 
-  rl.setPrompt("Your input: ");
+  rl.setPrompt("Type another word (or press enter to finish): ");
   rl.prompt();
+}).on('close', () => {
+  console.log("OK bye");
 });
 
 //
