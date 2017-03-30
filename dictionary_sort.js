@@ -14,12 +14,26 @@ function nonSensitive(s1, s2) {
   var s2lower = s2.toLowerCase();
 
 	if (s1lower > s2lower){
-		return 1;
+		return true;
 }else if(s1lower < s2lower){
-		return -1;
+		return false;
 }else{
-		return 0;
+		return false;
 }
+}
+
+function sorts(arr){
+  let tmp='';
+  for(var i = 0; i < arr.length; i++){
+    for(var j = 0; j < (arr.length - i - 1); j++){
+      if(nonSensitive(arr[j],arr[j+1])){
+        tmp=arr[j];
+        arr[j]=arr[j+1];
+        arr[j+1]=tmp;
+      }
+    }
+  }
+  return arr;
 }
 
 
@@ -34,7 +48,7 @@ rl.on('line', (line) => {
 
 
 data.push(line);
-console.log(data.sort(nonSensitive));
+console.log(sorts(data));
 
       break;
   }
