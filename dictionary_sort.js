@@ -11,7 +11,6 @@ const rl = readline.createInterface({
 
 rl.on('line', (line) => {
   let tempInput = line;
-
   Dictionary(tempInput);
   rl.prompt();
 });
@@ -20,7 +19,6 @@ console.log('Type a word:');
 let tempArr = [], tempChar = [];
 
 function Dictionary(wordArr) {
-  // Your pig latin implementation here...
   let tempDict;
   let checkWord = /[a-z]/gi;
   if (wordArr.length > 0) {
