@@ -26,10 +26,10 @@ const rl = readline.createInterface({
         }
       }
       for (let k = 0; k < arr.length; k++){
-      console.log(arr[k]);  
+      console.log(arr[k]);
+      rl.close();
       }
       }
-      rl.prompt();
     });
 
 
