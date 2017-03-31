@@ -9,21 +9,28 @@ const rl = readline.createInterface({
   let arr = [];
   rl.prompt();
   rl.on("line", (answer) => {
-    if (answer !== ""){
-      arr.unshift(answer);
+    if (answer !== "") {
       console.log(`Kata ${answer} sudah dimasukkan ke kamus`);
+      arr.unshift(answer);
       rl.prompt();
     } else {
       console.log(`Selamat kamus telah memiliki ${arr.length} kata`);
-      let sortir = arr.sort(function (a, b) {
-        return a.toLowerCase().localeCompare(b.toLowerCase());
-      });
-      //src = http://stackoverflow.com/questions/8996963/how-to-perform-case-insensitive-sorting-in-javascript
-      for (let i = 0; i < sortir.length; i++){
-        console.log(sortir[i]);
+      let tukar_1 = [];
+      for(let i = 1, tukar = 0; i < arr.length ;i++){
+        if(arr[i - 1] > arr[i]){
+          tukar_1 = arr[i - 1] ;
+          arr[i - 1] = arr[i] ;
+          arr[i] = tukar_1;
+          tukar = tukar + 1;
+        }
       }
-      rl.prompt();
+      //while(tukar > 0 );
+      //return arr;
+      console.log(arr);
     }
+
+      //}
+      rl.prompt();
   });
 
 
