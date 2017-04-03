@@ -12,9 +12,9 @@ function dictionarySort(input){
   for(var i = 1; i < tampungInputan.length; i++) {
     for(var j = 0; j < i; j++) {
       if(tampungInputan[i].toLowerCase() < tampungInputan[j].toLowerCase()) {
-        var lower = tampungInputan[i];
+        var prefix = tampungInputan[i];
         tampungInputan[i] = tampungInputan[j];
-        tampungInputan[j] = lower;
+        tampungInputan[j] = prefix;
       }
     }
   }
@@ -24,11 +24,10 @@ function dictionarySort(input){
 }
 
 function tampil(){
-  rl.on('line', (input) => {
- if (input.length === 0) {
+    rl.on('line', (input) => {
+    if (input.length === 0) {
       rl.close();
     }
-
     else if (input===" ") {
       console.log(`Tidak Boleh Memasukan Spasi!`);
       rl.setPrompt('> Masukan Kata Lagi (atau tekan entar untuk mengakhiri): ');
