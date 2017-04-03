@@ -10,19 +10,30 @@ var tempArr=[];
 rl.prompt();
 
 rl.on('line', (aksi) => {
-	tempArr.push(aksi);
-	rl.setPrompt("Type another word (or press ctrl+c to finish) : ");
-	rl.prompt();
+  if(aksi.length==0){
+     rl.close();
+  }else{
+    let temp=aksi.toLowerCase();
+    tempArr.push(temp);
+    rl.setPrompt("Type another word : ");
+    rl.prompt();
+  }
 })
 function dictionary(arrIn){
-    arrIn.sort(function(a,b){
-        return a.toLowerCase().localeCompare(b.toLowerCase());
-    })
+    for(var i = 1; i < arrIn.length; i++) {
+    for(var j = 0; j < i; j++) {
+      if(arrIn[i].toLowerCase() < arrIn[j].toLowerCase()) {
+        let temp = arrIn[i];
+        arrIn[i] = arrIn[j];
+        arrIn[j] = temp;
+      }
+    }
+  }
     return arrIn;
 	}
+
 rl.on('close', () => {
 	console.log("");
 	console.log("Congratulations! Your dictionary has "+tempArr.length+" words : ");
 	console.log(dictionary(tempArr));
-	rl.close();
 })
