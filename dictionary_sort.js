@@ -34,7 +34,7 @@ function dictionarySort(sentenceArray){
   let temp;
   for (let i = 0; i < sentenceArray.length-1; i++) {
     for (let j = i+1; j < sentenceArray.length; j++) {
-      if (sentenceArray[i] > sentenceArray[j]) {
+      if (sentenceArray[i].toLowerCase() > sentenceArray[j].toLowerCase()) {
         temp = sentenceArray[i];
         sentenceArray[i] = sentenceArray[j];
         sentenceArray[j] = temp;
